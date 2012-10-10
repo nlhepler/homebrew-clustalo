@@ -8,6 +8,13 @@ class ClustalO < Formula
 
   depends_on 'argtable'
 
+  fails_with :clang do
+    build 421
+    cause <<-EOS.undent
+      clang doesn't yet support OpenMP
+      EOS
+  end
+
   def install
     system "./configure", "OPENMP_CFLAGS='-fopenmp'",
                           "CFLAGS=\"${CFLAGS} -DHAVE_OPENMP\"",
