@@ -17,7 +17,7 @@ class ClustalO < Formula
 
   def install
     system "./configure", "OPENMP_CFLAGS='-fopenmp'",
-                          "CFLAGS=\"${CFLAGS} -DHAVE_OPENMP\"",
+                          "CFLAGS='-DHAVE_OPENMP'",
                           "--disable-debug", "--disable-dependency-tracking",
                           "--prefix=#{prefix}"
     system "make install" # if this fails, try separate make/make install steps
