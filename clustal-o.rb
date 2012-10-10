@@ -9,7 +9,8 @@ class ClustalO < Formula
   depends_on 'argtable'
 
   def install
-    system "./configure", "OPENMP_CFLAGS='-fopenmp'", "CFLAGS='-DHAVE_OPENMP'",
+    system "./configure", "OPENMP_CFLAGS='-fopenmp'",
+                          "CFLAGS=\"${CFLAGS} -DHAVE_OPENMP\"",
                           "--disable-debug", "--disable-dependency-tracking",
                           "--prefix=#{prefix}"
     system "make install" # if this fails, try separate make/make install steps
